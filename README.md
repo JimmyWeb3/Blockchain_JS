@@ -65,7 +65,8 @@ const key_priv_b = "AD47604AD676051E20ABBA120ED9B65BE6BFC2E12A1653006DC051EB4BF9
 const key_priv_c = "B85FB30574D787F009D61C02C9C4C59C5BE77232D93A6326E83FA3D4B6958C0D";
 ```
 
-A wallet stores the private key and the public key. Create three wallets from the private keys above.
+A wallet stores the private key and the public key.
+Create three wallets from the private keys above.
 ``` JS
 const wallet_a = new Wallet();
 wallet_a.rebuildFromPrivateKey(key_priv_a);
@@ -74,3 +75,37 @@ wallet_b.rebuildFromPrivateKey(key_priv_b);
 const wallet_c = new Wallet();
 wallet_c.rebuildFromPrivateKey(key_priv_c);
 ```
+Now create an instance of the Blockchain.
+After it is created we validate its state.
+``` JS
+const myBlockChain = new Blockchain(wallet_a.getKeyPair());
+myBlockChain.validateState();
+```
+Now we create some Transactions. They need to be signed with our private key.
+After they are signed they can be added to the Blockchain queue of
+pending Transactions.
+``` JS
+let tx01_Amount = 10;
+let tx02_Amount = 20;
+const tx01 = new Transaction(wallet_a.getPublicKey(), wallet_b.getPublicKey(), tx01_Amount);
+tx01.signTransaction(wallet_a.getKeyPair());
+myBlockChain.addTransaction(tx01);
+const tx02 = new Transaction(wallet_a.getPublicKey(), wallet_c.getPublicKey(), tx02_Amount);
+tx02.signTransaction(wallet_a.getKeyPair());
+myBlockChain.addTransaction(tx02);
+```
+To mine the pending transactions of a Blockchain we call the function minePendingTransactions()
+After the mining is done we validate the blockchain to see if all went okay.
+myBlockChain.minePendingTransactions(wallet_a.getKeyPair()); // block 1
+myBlockChain.validateState();
+
+If we want to see the balance of a wallet we call the function getBalanceOfAddress().
+``` JS
+// console balances
+let balance_a = myBlockChain.getBalanceOfAddress(wallet_a.getPublicKey());
+console.log("balance_a: " + balance_a);
+```
+
+This is the general workings of this project.
+Any questions feel free to email me at:
+web3devjimmy@gmail.com
