@@ -1,12 +1,12 @@
 /**
  * @name: utils.js
- * @author: Jimmy Peltonen aka JimmEL
+ * @license: MIT
  * @copyright: MIT
+ * @author: Jimmy Peltonen
  * 
- * CREATED FOR PROJECT: BLOCKCHAIN IN JAVASCRIPT
- *      Version 0.1a
- *      Project Start: 2022-10-08
- *
+ * Version 0.1a
+ * Project Start: 2022-10-08
+ * 
  * DEPENDENCIES node package manager:
  * -
  */

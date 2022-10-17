@@ -1,12 +1,12 @@
 /**
  * @name: main.js
- * @author: Jimmy Peltonen aka JimmEL
+ * @license: MIT
  * @copyright: MIT
+ * @author: Jimmy Peltonen
  * 
- * CREATED FOR PROJECT: BLOCKCHAIN IN JAVASCRIPT
- *      Version 0.1a
- *      Project Start: 2022-10-08
- *
+ * Version 0.1a
+ * Project Start: 2022-10-08
+ * 
  * DEPENDENCIES node package manager:
  * npm install elliptic --save
  */
@@ -15,11 +15,11 @@
 import { Wallet } from './wallet.js';
 import { Transaction, Block, Blockchain } from './blockchain.js';
 import { createStringOfZeros } from './utils.js';
-import { TestsManager, eckey_a, eckey_b, eckey_c } from './tests.js';
+import { TestsManager, wallet_a, wallet_b, wallet_c } from './tests.js';
 import crypto from 'crypto';
 import EC from 'elliptic';
 const ec_secp256k1 = new EC.ec('secp256k1');
 
 // TestsManager runs the bug checking tests designed for this project.
-const myTestManager = new TestsManager(eckey_a,eckey_b,eckey_c);
+const myTestManager = new TestsManager();
 myTestManager.run_all_tests();

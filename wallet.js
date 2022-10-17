@@ -31,10 +31,17 @@ class Wallet {
             return;
         } else if(privateKey.length != 64) {
             console.log("Error: rebuildFromPrivateKey - privateKey.length != 64");
+            console.log(privateKey.length);
             return;
         }
         // Error checks done, continue...
         this.key = ec_secp256k1.keyFromPrivate(privateKey);
+    }
+    /**
+     * @returns {string}
+     */
+     getKeyPair() {
+        return this.key;
     }
     /**
      * @returns {string}
