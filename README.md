@@ -94,11 +94,13 @@ const tx02 = new Transaction(wallet_a.getPublicKey(), wallet_c.getPublicKey(), t
 tx02.signTransaction(wallet_a.getKeyPair());
 myBlockChain.addTransaction(tx02);
 ```
-To mine the pending transactions of a Blockchain we call the function minePendingTransactions()
-After the mining is done we validate the blockchain to see if all went okay.
+To mine the pending transactions of a Blockchain we call
+the function minePendingTransactions() After the mining is done we validate
+the blockchain to see if all went okay.
+``` JS
 myBlockChain.minePendingTransactions(wallet_a.getKeyPair()); // block 1
 myBlockChain.validateState();
-
+```
 If we want to see the balance of a wallet we call the function getBalanceOfAddress().
 ``` JS
 // console balances
