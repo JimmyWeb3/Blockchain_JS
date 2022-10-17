@@ -6,7 +6,7 @@
 
 Welcome. My name is Jimmy and I have written a simple blockchain
 in Javascript. The project uses Node.js to run. The blockchain has
-mining implemented so it can create new blocks that is aded to it
+mining implemented so it can create new blocks that is added to it
 through proof of work.
 
 Let's go over the code structure. There are five classes in this project.
