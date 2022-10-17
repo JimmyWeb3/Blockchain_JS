@@ -1,38 +1,43 @@
 # Blockchain_JS
 
-Welcome. My name is Jimmy and I have written a simple blockchain in Javascript.
-The project uses Node.js to run. The blockchain has mining implemented so it 
-can create new blocks that is aded to it through proof of work.
+Welcome. My name is Jimmy and I have written a simple blockchain
+in Javascript. The project uses Node.js to run. The blockchain has
+mining implemented so it can create new blocks that is aded to it
+through proof of work.
 
 Let's go over the code structure. There are five classes in this project.
 - class Transaction
 ```
-The Transaction takes a fromAdress and a toAdress and the amount to be sent.
-Every Transaction is signed with the private key of the sender.
+The Transaction takes a fromAdress and a toAdress and the amount
+to be sent. Every Transaction is signed with the private key of
+the sender.
 ```
 - class Block
 ```
-The Block instance stores Transactions that has been added to it. A Block can be mined. Mining
-is too prove you have done work (proof of work) by hashing the whole Block with
-sha256 and finding a hash that begins with enough zeros. The amount of zeros depends
+The Block instance stores Transactions that has been added to it.
+A Block can be mined. Mining is too prove you have done work
+(proof of work) by hashing the whole Block with sha256 and finding
+a hash that begins with enough zeros. The amount of zeros depends
 on the current mining difficulty.
 ```
 - class Blockchain
 ```
-The Blockchain instance stores Blocks that has been added to it. Every block is bound together
-by having the hash stored of the previous Block in the Blockchain.
+The Blockchain instance stores Blocks that has been added to it.
+Every block is bound together by having the hash stored of
+the previous Block in the Blockchain.
 ```
 - class Wallet
 ```
-The Wallet instance contains a private key and a public key. It is referred to as a key pair.
-The public key is derived from the private key trhough elliptic curve calculations.
+The Wallet instance contains a private key and a public key.
+It is referred to as a key pair. The public key is derived from the
+private key trhough elliptic curve calculations.
 A Wallet contains a certain amount of coins tied to the key pair.
 ```
 
 - class TestsManager
 ```
-Class to manage the automatic testing for this project. Run a single test or call
-the function 'run_all_tests()'.
+Class to manage the automatic testing for this project.
+Run a single test or call the function 'run_all_tests()'.
 ```
 ``` JS
 // TestsManager runs the bug checking tests designed for this project.
