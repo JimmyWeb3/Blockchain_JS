@@ -107,5 +107,7 @@ console.log("balance_a: " + balance_a);
 ```
 
 This is the general workings of this project.
+
 Any questions feel free to email me at:
+
 web3devjimmy@gmail.com
