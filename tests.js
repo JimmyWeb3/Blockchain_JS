@@ -61,8 +61,8 @@ class TestsManager {
         this._f01_blockchain_class_constructor_v001();
         this._f02_make_test_valid_transactions_v001();
         this._f03_addTransaction_operspending_pendingtransactions_v001();
-        //this._f04_getAmount_pendingtransactions_v001();
-        //this._f05_getBalanceOfAddresses_v001();
+        this._f04_getAmount_pendingtransactions_v001();
+        this._f05_getBalanceOfAddresses_v001();
         this.messages.push(this.line);
         this.messages.push("numof_tests_succeeded: ", + this.numof_tests_succeeded);
         this.messages.push("numof_tests_failed: ", + this.numof_tests_failed);
@@ -248,23 +248,23 @@ class TestsManager {
         let bSuccess = false;
         this._fhelper_console_head(fname);
         // Part 1 of this test.
-        const myBlockChain = new Blockchain(eckey_a);
+        const myBlockChain = new Blockchain(wallet_a.getKeyPair());
         let tx01_Amount = 17;
         let tx02_Amount = 13;
-        const tx01 = new Transaction(eckey_a.getPublic('hex'), eckey_b.getPublic('hex'), tx01_Amount);
-        tx01.signTransaction(eckey_a);
+        const tx01 = new Transaction(wallet_a.getPublicKey(), wallet_b.getPublicKey(), tx01_Amount);
+        tx01.signTransaction(wallet_a.getKeyPair());
         myBlockChain.addTransaction(tx01);
-        const tx02 = new Transaction(eckey_a.getPublic('hex'), eckey_c.getPublic('hex'), tx02_Amount);
-        tx02.signTransaction(eckey_a);
+        const tx02 = new Transaction(wallet_a.getPublicKey(), wallet_c.getPublicKey(), tx02_Amount);
+        tx02.signTransaction(wallet_a.getKeyPair());
         myBlockChain.addTransaction(tx02);
         let testdata_amount = tx01_Amount + tx02_Amount;
         // do test:
         console.log("pendingtransactions:");
-        let arr = myBlockChain.fetch_fromAdress_pendingtransactions_as_Array(eckey_a.getPublic('hex'));
+        let arr = myBlockChain.fetch_fromAdress_pendingtransactions_as_Array(wallet_a.getPublicKey());
         console.log(arr);
         console.log("");
         console.log("TEST DATA:");
-        let txAmountPending = myBlockChain.getAmount_pendingtransactions(eckey_a.getPublic('hex'));
+        let txAmountPending = myBlockChain.getAmount_pendingtransactions(wallet_a.getPublicKey());
         console.log("txAmountPending should be " + testdata_amount);
         console.log("txAmountPending: " + txAmountPending);
         console.log("");
@@ -288,27 +288,27 @@ class TestsManager {
         let bSuccess = false;
         this._fhelper_console_head(fname);
         // Part 1 of this test.
-        const myBlockChain = new Blockchain(eckey_a);
+        const myBlockChain = new Blockchain(wallet_a.getKeyPair());
         // Block 1
         let tx01_Amount = 10;
         let tx02_Amount = 20;
-        const tx01 = new Transaction(eckey_a.getPublic('hex'), eckey_b.getPublic('hex'), tx01_Amount);
-        tx01.signTransaction(eckey_a);
+        const tx01 = new Transaction(wallet_a.getPublicKey(), wallet_b.getPublicKey(), tx01_Amount);
+        tx01.signTransaction(wallet_a.getKeyPair());
         myBlockChain.addTransaction(tx01);
-        const tx02 = new Transaction(eckey_a.getPublic('hex'), eckey_c.getPublic('hex'), tx02_Amount);
-        tx02.signTransaction(eckey_a);
+        const tx02 = new Transaction(wallet_a.getPublicKey(), wallet_c.getPublicKey(), tx02_Amount);
+        tx02.signTransaction(wallet_a.getKeyPair());
         myBlockChain.addTransaction(tx02);
-        myBlockChain.minePendingTransactions(eckey_a); // block 1
+        myBlockChain.minePendingTransactions(wallet_a.getKeyPair()); // block 1
         // Block 2
         let tx03_Amount = 11;
         let tx04_Amount = 8;
-        const tx03 = new Transaction(eckey_c.getPublic('hex'), eckey_b.getPublic('hex'), tx03_Amount);
-        tx03.signTransaction(eckey_c);
+        const tx03 = new Transaction(wallet_c.getPublicKey(), wallet_b.getPublicKey(), tx03_Amount);
+        tx03.signTransaction(wallet_c.getKeyPair());
         myBlockChain.addTransaction(tx03);
-        const tx04 = new Transaction(eckey_a.getPublic('hex'), eckey_b.getPublic('hex'), tx04_Amount);
-        tx04.signTransaction(eckey_a);
+        const tx04 = new Transaction(wallet_a.getPublicKey(), wallet_b.getPublicKey(), tx04_Amount);
+        tx04.signTransaction(wallet_a.getKeyPair());
         myBlockChain.addTransaction(tx04);
-        myBlockChain.minePendingTransactions(eckey_c); // block 2
+        myBlockChain.minePendingTransactions(wallet_c.getKeyPair()); // block 2
         // Dump blochchain on screen.
         this._fhelper_console_dump_blockchain(myBlockChain);
         // Set balance that should be now.
@@ -318,9 +318,9 @@ class TestsManager {
         // do test:
         console.log("");
         console.log("TEST DATA:");
-        let balance_a = myBlockChain.getBalanceOfAddress(eckey_a.getPublic('hex'));
-        let balance_b = myBlockChain.getBalanceOfAddress(eckey_b.getPublic('hex'));
-        let balance_c = myBlockChain.getBalanceOfAddress(eckey_c.getPublic('hex'));
+        let balance_a = myBlockChain.getBalanceOfAddress(wallet_a.getPublicKey());
+        let balance_b = myBlockChain.getBalanceOfAddress(wallet_b.getPublicKey());
+        let balance_c = myBlockChain.getBalanceOfAddress(wallet_c.getPublicKey());
         console.log("balance for '04a...' should be " + (testdata_balance_a));
         console.log("balance '04a...': " + balance_a);
         console.log("balance for '04b...' should be " + (testdata_balance_b));
