@@ -62,8 +62,4 @@ class Wallet {
     }
 }
 
-// ADD P2PKH PUBLIC ADRESS (KEY)
-// https://medium.com/blockthought/creating-bitcoin-wallets-in-js-69c0773c2954
-// http://gobittest.appspot.com/Address
-
 export { Wallet }
