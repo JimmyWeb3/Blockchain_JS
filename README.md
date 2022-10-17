@@ -1,4 +1,8 @@
 # Blockchain_JS
+![Language](https://img.shields.io/badge/Language-Javascript-blue)
+[![Visual Studio](https://badgen.net/badge/icon/visualstudio?icon=visualstudio&label)](https://code.visualstudio.com/)
+[![Npm](https://badgen.net/badge/icon/npm?icon=npm&label)](https://https://npmjs.com/)
+![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)
 
 Welcome. My name is Jimmy and I have written a simple blockchain
 in Javascript. The project uses Node.js to run. The blockchain has
@@ -112,4 +116,5 @@ This is the general workings of this project.
 
 Any questions feel free to email me at:
 
+# CONTACT
 web3devjimmy@gmail.com
