@@ -114,7 +114,14 @@ console.log("balance_a: " + balance_a);
 
 This is the general workings of this project.
 
-Any questions feel free to email me at:
 
 # CONTACT
+Any questions feel free to email me at:
+
 web3devjimmy@gmail.com
+
+![Language](https://img.shields.io/badge/Language-Javascript-blue)
+![Language](https://img.shields.io/badge/Language-HTML-green)
+![Language](https://img.shields.io/badge/Language-CSS-red)
+![Language](https://img.shields.io/badge/Language-Python-yellow)
+![Language](https://img.shields.io/badge/Language-C++-green)
