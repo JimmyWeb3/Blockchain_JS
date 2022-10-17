@@ -15,7 +15,7 @@ the sender.
 - class Block
 ```
 The Block instance stores Transactions that has been added to it.
-A Block can be mined. Mining is too prove you have done work
+A Block can be mined. Mining exists too prove that you have done work
 (proof of work) by hashing the whole Block with sha256 and finding
 a hash that begins with enough zeros. The amount of zeros depends
 on the current mining difficulty.
